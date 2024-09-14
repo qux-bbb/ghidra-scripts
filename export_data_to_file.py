@@ -15,6 +15,7 @@ choice = askChoice(
         "2. start_addr, end_addr",
         "3. current_addr, data_len",
         "4. current_addr, end_addr",
+        "5. selected data",
     ],
     "1. start_addr, data_len",
 )
@@ -33,6 +34,10 @@ elif choice == "4. current_addr, end_addr":
     data_start = currentAddress
     data_end = askAddress("end_addr", "Data end address(hex)")
     data_len = data_end.getOffset() - data_start.getOffset()
+elif choice == "5. selected data":
+    data_start = currentSelection.getMinAddress()
+    data_end = currentSelection.getMaxAddress()
+    data_len = data_end.getOffset() - data_start.getOffset() + 1
 else:
     # No this choice
     exit(1)
